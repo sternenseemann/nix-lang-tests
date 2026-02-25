@@ -1,0 +1,9 @@
+[[test]]
+name = "parse-okay-warn"
+runner = "parse-okay"
+matrix = true
+
+[[test]]
+runner = "parse-okay"
+flags = ["--extra-deprecated-features", "rec-set-dynamic-attrs"]
+matrix = true

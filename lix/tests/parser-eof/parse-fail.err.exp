@@ -1,0 +1,5 @@
+error: syntax error, unexpected end of file, expecting expression
+       at /pwd/in.nix:3:1:
+            2| # no content
+            3|
+             | ^

@@ -1,0 +1,17 @@
+[[test]]
+runner = "parse-okay"
+flags = [ "--extra-deprecated-features", "rec-set-overrides rec-set-merges rec-set-dynamic-attrs" ]
+
+[[test]]
+runner = "parse-fail"
+flags = [ "--extra-deprecated-features", "rec-set-merges rec-set-dynamic-attrs" ]
+
+[[test]]
+runner = "eval-fail"
+in = "in-2.nix"
+flags = [ "--extra-deprecated-features", "rec-set-overrides" ]
+
+[[test]]
+runner = "eval-okay"
+in = "in-3.nix"
+flags = [ "--extra-deprecated-features", "rec-set-overrides" ]

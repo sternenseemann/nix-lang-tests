@@ -1,0 +1,33 @@
+assert builtins.pathExists (./lib.nix);
+assert builtins.pathExists (builtins.toPath ./lib.nix);
+assert builtins.pathExists (builtins.toString ./lib.nix);
+assert !builtins.pathExists (builtins.toString ./lib.nix + "/");
+assert !builtins.pathExists (builtins.toString ./lib.nix + "/.");
+# FIXME
+# assert !builtins.pathExists (builtins.toString ./lib.nix + "/..");
+# assert !builtins.pathExists (builtins.toString ./lib.nix + "/a/..");
+# assert !builtins.pathExists (builtins.toString ./lib.nix + "/../lib.nix");
+assert !builtins.pathExists (builtins.toString ./lib.nix + "/./");
+assert !builtins.pathExists (builtins.toString ./lib.nix + "/./.");
+assert builtins.pathExists (builtins.toString ./.. + "/test-home/lib.nix");
+assert !builtins.pathExists (builtins.toString ./.. + "test-home/lib.nix");
+assert builtins.pathExists (builtins.toString ./. + "/../test-home/lib.nix");
+assert builtins.pathExists (builtins.toString ./. + "/../test-home/./lib.nix");
+assert builtins.pathExists (builtins.toString ./.);
+assert builtins.pathExists (builtins.toString ./. + "/");
+assert builtins.pathExists (builtins.toString ./. + "/../test-home");
+assert builtins.pathExists (builtins.toString ./. + "/../test-home/");
+assert builtins.pathExists (builtins.toString ./. + "/../test-home/.");
+assert builtins.pathExists (builtins.toString ./. + "/../test-home/./");
+assert builtins.pathExists (builtins.toString ./. + "/../test-home//./");
+assert builtins.pathExists (builtins.toString ./. + "/../test-home/..");
+assert builtins.pathExists (builtins.toString ./. + "/../test-home/../");
+assert builtins.pathExists (builtins.toString ./. + "/../test-home/..//");
+assert builtins.pathExists (builtins.toPath (builtins.toString ./lib.nix));
+assert !builtins.pathExists (builtins.toPath (builtins.toString ./bla.nix));
+assert builtins.pathExists ./lib.nix;
+assert !builtins.pathExists ./bla.nix;
+assert builtins.pathExists ./symlink-resolution/foo/overlays/overlay.nix;
+assert builtins.pathExists ./symlink-resolution/broken;
+assert builtins.pathExists (builtins.toString ./symlink-resolution/foo/overlays + "/.");
+true

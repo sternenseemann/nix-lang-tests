@@ -1,0 +1,7 @@
+[[test]]
+runner = "eval-okay"
+matrix = true
+
+[[test]]
+runner = "parse-okay"
+flags = ["--extra-deprecated-features", "broken-string-indentation"]
